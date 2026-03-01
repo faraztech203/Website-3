@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify License - DLIMS 2.0 - Punjab</title>
+    <!-- Using Google Fonts for a clean look similar to the original -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1b5e20;
+            --light-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #fff;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-green);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-section img {
+            height: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin: 0 10px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* Main Content Area */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .verify-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 15px 20px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            background: #eee;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            background: #fff;
+            border-bottom: 3px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        /* Form Styling */
+        .form-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .captcha-box {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .btn-verify {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .btn-verify:hover {
+            background-color: #144718;
+        }
+
+        /* Footer Info */
+        .info-section {
+            margin-top: 30px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header { flex-direction: column; text-align: center; }
+            nav { margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-section">
+        <!-- Replace with actual DLIMS/Punjab Govt Logo URLs -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Government_of_the_Punjab_Logo.svg/1200px-Government_of_the_Punjab_Logo.svg.png" alt="Punjab Govt Logo">
+        <div style="font-weight: bold; font-size: 18px;">DLIMS Punjab</div>
+    </div>
+    <nav>
+        <a href="#">HOME</a>
+        <a href="#">LICENSING CENTERS</a>
+        <a href="#">TRACK APPLICATION</a>
+        <a href="#" style="color: var(--primary-green);">VERIFY LICENSE</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="verify-card">
+        <div class="card-header">Verify License</div>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('regular')">Regular License</div>
+            <div class="tab" onclick="switchTab('international')">International License</div>
+        </div>
+
+        <div class="form-body">
+            <form id="verifyForm">
+                <div class="form-group">
+                    <label for="cnic">Enter CNIC *</label>
+                    <input type="text" id="cnic" placeholder="xxxxx-xxxxxxx-x" required>
+                </div>
+
+                <div id="licenseField" class="form-group">
+                    <label for="license_no">License Number *</label>
+                    <input type="text" id="license_no" placeholder="Enter License Number" required>
+                </div>
+
+                <!-- International License specific field (Hidden by default) -->
+                <div id="passportField" class="form-group" style="display:none;">
+                    <label for="passport">Enter Passport Number *</label>
+                    <input type="text" id="passport" placeholder="Passport Number">
+                </div>
+
+                <div class="form-group">
+                    <label>Security Question: What is 5 + 3 = ?</label>
+                    <input type="text" id="captcha" placeholder="Enter answer" required>
+                </div>
+
+                <button type="submit" class="btn-verify">Verify License</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <p>The Driving License Information Management System (DLIMS) is an integrated component of the Government of Punjab's <strong>Dastak - One Window</strong> initiative which securely carries out all DLIMS processes including form submission, verification, payment, and card tracking.</p>
+        <p><strong>Contact Us:</strong><br>
+        Emergency Number: 15 | Phone: 042-99202892 | Email: info@dlims.punjab.gov.pk</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 Punjab Information Technology Board (PITB). All rights reserved.
+</footer>
+
+<script>
+    function switchTab(type) {
+        const tabs = document.querySelectorAll('.tab');
+        const licenseField = document.getElementById('licenseField');
+        const passportField = document.getElementById('passportField');
+
+        tabs.forEach(tab => tab.classList.remove('active'));
+        
+        if (type === 'regular') {
+            tabs[0].classList.add('active');
+            licenseField.style.display = 'block';
+            passportField.style.display = 'none';
+        } else {
+            tabs[1].classList.add('active');
+            licenseField.style.display = 'none';
+            passportField.style.display = 'block';
+        }
+    }
+
+    document.getElementById('verifyForm').onsubmit = function(e) {
+        e.preventDefault();
+        alert("Verification request sent. (This is a replica interface)");
+    };
+</script>
+
+</body>
+</html>
