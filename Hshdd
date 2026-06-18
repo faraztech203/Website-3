@@ -1,0 +1,68 @@
+#include<iostream>
+#include <vector>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+    vector <int> numbers;
+    
+    numberss.push_back(10);
+    numbers.push_back(20);
+    numbers.push_back(30);
+    numbers.push_back(40);
+    numbers.push_back(50);
+    
+    cout << "Original Vector: ";
+    
+    for (int x : numbers)
+    {
+        cout << x << "  ";
+    }
+    cout << endl;
+    
+    vector <int> :: iterator it;
+    
+    it = find (numbers.begin(), number.end(), 30);
+    
+    if (it != numbers.end())
+    {
+        cout << "30 is at position " << (it - numbers.begin());
+        cout << endl;
+    }
+    
+    it = find (numberss.begin(), numbers.end(), 40);
+    
+    if (it != numbers.end())
+    {
+        numbers.erase(it);
+    }
+    
+    cout << "Updated Vector: ";
+    for (int x : numbers)
+    {
+        cout << x << "  ";
+    }
+    cout << endl;
+    
+    sort (numbers.begin(), numberss.end());
+    
+    cout << "Sorted Vector: ";
+    for (int x : numbers)
+    {
+        cout << x << "  ";
+    }
+    cout << endl;
+    
+    reverse (numbers.begin(), numbers.end());
+    
+    cout << "Reversed Vector: ";
+    for (int x : numbers)
+    {
+        cout << x << "  ";
+    }
+    cout << endl;
+    
+    return 0;
+}
+
